@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สรุปบทความ | Japanese Traditional Music and School Music Education</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#1d2b50;--indigo2:#274070;--vermillion:#d94f30;--gold:#c9a227;
+  --paper:#faf6ee;--card:#ffffff;--ink:#22252b;--muted:#6b7080;--line:#e5ddcc;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans Thai',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+  line-height:1.85;font-size:17px;
+}
+::selection{background:#f3d9b0}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;color:#fff;padding:96px 24px 72px;overflow:hidden;
+  background:linear-gradient(135deg,#16223f 0%,#1d2b50 45%,#2a4370 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;opacity:.10;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 80 40'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2'%3E%3Cpath d='M0 40 A20 20 0 0 1 40 40 M40 40 A20 20 0 0 1 80 40'/%3E%3Ccircle cx='20' cy='40' r='12'/%3E%3Ccircle cx='60' cy='40' r='12'/%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner{position:relative;max-width:960px;margin:0 auto}
+.jp-vertical{
+  position:absolute;top:-64px;right:0;writing-mode:vertical-rl;font-size:15px;letter-spacing:.35em;
+  color:#ffd98a;opacity:.75;font-weight:500;border-right:1px solid rgba(255,217,138,.4);padding-right:12px;height:220px;display:none;
+}
+@media(min-width:800px){.jp-vertical{display:block}}
+.kicker{
+  display:inline-block;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:#ffd98a;border:1px solid rgba(255,217,138,.45);border-radius:999px;padding:6px 16px;margin-bottom:22px;
+}
+.hero h1{
+  font-family:'Noto Serif Thai',serif;font-weight:700;font-size:clamp(28px,5vw,44px);line-height:1.35;margin-bottom:14px;
+}
+.hero .en-title{font-style:italic;color:#c8d4ec;font-size:clamp(15px,2.2vw,18px);margin-bottom:26px}
+.meta{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px);
+  border-radius:999px;padding:7px 16px;font-size:13.5px;color:#e8edf7}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(250,246,238,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.nav-in{max-width:960px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;padding:0 12px;-webkit-overflow-scrolling:touch}
+nav a{white-space:nowrap;color:var(--muted);text-decoration:none;font-size:13.5px;font-weight:600;padding:14px 13px;border-bottom:3px solid transparent}
+nav a:hover{color:var(--vermillion)}
+
+/* ---------- SECTIONS ---------- */
+section{padding:58px 0 12px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.num{
+  font-family:'Noto Serif Thai',serif;font-size:44px;font-weight:700;color:transparent;
+  -webkit-text-stroke:1.5px var(--vermillion);line-height:1;
+}
+h2{font-family:'Noto Serif Thai',serif;font-size:clamp(22px,3.4vw,29px);color:var(--indigo);font-weight:700}
+.rule{width:56px;height:4px;background:linear-gradient(90deg,var(--vermillion),var(--gold));border-radius:2px;margin:10px 0 26px}
+p{margin-bottom:14px}
+strong{color:var(--indigo)}
+.hl{background:linear-gradient(180deg,transparent 62%,#ffe3a6 62%);padding:0 2px;font-weight:600}
+
+/* callout example box */
+.callout{
+  background:linear-gradient(135deg,#fff9ec,#fdf3dc);border-left:5px solid var(--gold);
+  border-radius:0 14px 14px 0;padding:18px 22px;margin:20px 0;box-shadow:0 2px 10px rgba(160,130,40,.08);
+}
+.callout .tag{display:inline-block;background:var(--gold);color:#fff;font-size:11.5px;font-weight:700;
+  letter-spacing:.1em;border-radius:999px;padding:3px 12px;margin-bottom:8px}
+.callout.warn{background:linear-gradient(135deg,#fdeeEA,#fbe3da);border-color:var(--vermillion)}
+.callout.warn .tag{background:var(--vermillion)}
+
+/* stat duel */
+.duel{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin:28px 0;
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 22px;
+  box-shadow:0 6px 22px rgba(29,43,80,.07)}
+.duel .big{font-family:'Noto Serif Thai',serif;font-weight:700;font-size:clamp(38px,7vw,58px);line-height:1.1;text-align:center}
+.duel .l{color:var(--indigo)} .duel .r{color:var(--vermillion)}
+.duel .vs{width:46px;height:46px;border-radius:50%;background:var(--indigo);color:#ffd98a;display:flex;
+  align-items:center;justify-content:center;font-weight:700;font-size:14px;margin:0 auto}
+.duel small{display:block;text-align:center;color:var(--muted);font-size:13.5px;line-height:1.55;margin-top:6px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:22px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 16px;
+  box-shadow:0 3px 14px rgba(29,43,80,.05);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(29,43,80,.11)}
+.card h4{color:var(--indigo);font-size:17px;margin-bottom:6px}
+.card .jp{color:var(--vermillion);font-size:12.5px;letter-spacing:.08em;font-weight:600}
+.card p{font-size:14.5px;margin:6px 0 0;color:#3d4250}
+
+/* timeline */
+.timeline{position:relative;margin:30px 0 10px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:10px;top:6px;bottom:6px;width:3px;
+  background:linear-gradient(var(--vermillion),var(--gold));border-radius:2px;opacity:.65}
+.tl-item{position:relative;margin-bottom:26px}
+.tl-item::before{content:"";position:absolute;left:-31px;top:7px;width:13px;height:13px;border-radius:50%;
+  background:var(--paper);border:3.5px solid var(--vermillion)}
+.tl-item:nth-child(even)::before{border-color:var(--gold)}
+.tl-year{font-family:'Noto Serif Thai',serif;font-weight:700;color:var(--vermillion);font-size:19px}
+.tl-item p{margin:2px 0 0;font-size:15.5px}
+
+/* three paths */
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+.path{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:22px;position:relative}
+.path h4{color:var(--indigo);margin-bottom:8px}
+.path .badge{position:absolute;top:-13px;left:18px;background:var(--muted);color:#fff;font-size:11.5px;
+  font-weight:700;border-radius:999px;padding:3px 13px;letter-spacing:.05em}
+.path.bad{opacity:.82}.path.bad .badge{background:#a33}
+.path.pick{border-color:var(--vermillion);background:linear-gradient(180deg,#fff,#fff7f2);
+  box-shadow:0 8px 26px rgba(217,79,48,.14)}
+.path.pick .badge{background:var(--vermillion)}
+.path ul{padding-left:18px;font-size:14.5px}
+.path li{margin-bottom:6px}
+
+/* bimusical */
+.bi{display:flex;gap:16px;flex-wrap:wrap;margin:22px 0}
+.bi-box{flex:1 1 260px;background:var(--indigo);color:#e9eef9;border-radius:18px;padding:24px;position:relative;overflow:hidden}
+.bi-box.alt{background:linear-gradient(140deg,#8a2f1c,var(--vermillion))}
+.bi-box .ic{font-size:30px}
+.bi-box h4{color:#fff;margin:6px 0 4px;font-size:17px}
+.bi-box p{font-size:14.5px;color:#dbe3f5;margin:0}
+
+/* quote */
+.quote{font-family:'Noto Serif Thai',serif;font-size:clamp(18px,2.8vw,23px);color:var(--indigo);
+  border-top:3px solid var(--vermillion);border-bottom:3px solid var(--gold);padding:26px 8px;margin:34px 0;text-align:center;line-height:1.7}
+
+footer{background:var(--indigo);color:#aab6d4;margin-top:70px;padding:36px 24px;font-size:13.5px;text-align:center}
+footer b{color:#ffd98a}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="jp-vertical">日本の伝統音楽と学校教育</div>
+    <span class="kicker">Article Summary • สรุปบทความวิชาการ</span>
+    <h1>เพลงดั้งเดิมญี่ปุ่นกับการศึกษาดนตรีในโรงเรียน</h1>
+    <div class="en-title">“Japanese Traditional Music and School Music Education” — Philosophy of Music Education Review 2(1), Spring 1994, pp. 25–36</div>
+    <div class="meta">
+      <span class="chip">✍️ Masafumi Ogawa (Ibaraki University)</span>
+      <span class="chip">🌏 ญี่ปุ่น • 1994</span>
+      <span class="chip">🎼 12 หน้า</span>
+    </div>
+  </div>
+</header>
+
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#problem">🎯 ปัญหา</a>
+    <a href="#trad">🎼 เพลงดั้งเดิม</a>
+    <a href="#history">📜 ประวัติศาสตร์</a>
+    <a href="#change">📢 เสียงเรียกร้อง</a>
+    <a href="#future">💡 Bi-musicality</a>
+    <a href="#conclusion">🏁 บทสรุป</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ================= PROBLEM ================= -->
+<section id="problem" class="reveal">
+  <div class="sec-head"><span class="num">01</span><h2>โรงเรียนสอนเพลง ไม่ตรงกับที่ชาวบ้านฟังจริง</h2></div>
+  <div class="rule"></div>
+
+  <div class="duel">
+    <div><div class="big l">443</div><small>อาจารย์ดนตรีใน 50 มหาวิทยาลัยครุศาสตร์ทั่วญี่ปุ่น (ปี 1993)</small></div>
+    <div class="vs">VS</div>
+    <div><div class="big r">9</div><small>คนเท่านั้น ที่เกี่ยวข้องกับเพลงดั้งเดิมญี่ปุ่น<br>(1 สอนบรรเลง · 1 นักวิชาการ · 7 ชาติพันธุ์ดนตรี)</small></div>
+  </div>
+
+  <p>โรงเรียนญี่ปุ่นสอน<strong>ดนตรีตะวันตก</strong>เกือบทั้งหมด แต่ในชีวิตจริงคนญี่ปุ่นกลับใช้เพลงของตัวเอง — เทศกาลฤดูร้อนคนนับพันแต่งยุกาตะเต้นรำ<span class="hl">โบนโอโดริ</span>, ผับคาราโอเกะร้องเพลง<span class="hl">เอ็นก้า</span> และนักร้องใช้เสียงแบบดั้งเดิม (เสียงจมูกจากอก) ไม่ใช่เบลคันโต</p>
+
+  <div class="callout">
+    <span class="tag">ตัวอย่างให้เห็นภาพ</span>
+    คอนเสิร์ตรับปริญญาที่มหาวิทยาลัยโออิตะเล่นแต่อัลเบนิซ โมซาร์ต ฮาเดิน ฯลฯ มีนักศึกษาร้องเพลงญี่ปุ่นเพียง <strong>1 คน</strong> —
+    เหมือนโรงเรียนไทยสอนแต่เปียโนคลาสสิก แต่ของจริงในงานวัดทั้งเมืองฟังหมอลำ/ลูกทุ่ง!
+  </div>
+
+  <p>วงจรนี้วนซ้ำมากว่า <strong>100 ปี</strong>: มหาวิทยาลัยสอนสายตะวันตก → ผลิตครูสายตะวันตก → ครูสอนเด็กแบบตะวันตก → เด็กโตขึ้นก็เข้ามหาวิทยาลัยสายเดิม… ไม่มีวันจบ</p>
+</section>
+
+<!-- ================= TRADITIONAL MUSIC ================= -->
+<section id="trad" class="reveal">
+  <div class="sec-head"><span class="num">02</span><h2>“เพลงดั้งเดิมญี่ปุ่น” ≠ แบบเดียว</h2></div>
+  <div class="rule"></div>
+
+  <p>มีหลายแนว และแต่ละแนว<strong>ต่างกันมากกว่า</strong>แนวต่างๆ ในดนตรีตะวันตกเสียอีก — คนละโน้ต คนละเทคนิค คนละสุนทรียศาสตร์ จึงเปรียบได้กับเป็น “<span class="hl">ดนตรีคนละชนิดกัน</span>”</p>
+
+  <div class="grid">
+    <div class="card"><div class="jp">雅楽 • GAGAKU</div><h4>ดนตรีราชสำนัก</h4><p>มาจากจีน เกาหลี เวียดนาม (ศตวรรษที่ 7) — ถูกมองว่า “สูงส่งและไร้พิษภัย” จึงเป็นตัวเลือกเดียวที่รัฐยุคเมจิยอมใช้</p></div>
+    <div class="card"><div class="jp">声明 • SHOMYO</div><h4>คำสวดพุทธ</h4><p>มาจากอินเดียผ่านจีน (ศตวรรษที่ 8)</p></div>
+    <div class="card"><div class="jp">三味線 • SHAMISEN</div><h4>เครื่องสายสามสาย</h4><p>มาจากจีนตอนใต้ผ่านหมู่เกาะโอกินาวา</p></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">ตัวอย่างการแตกสำนัก</span>
+    โนห์รำ <strong>สำนักคันเซ่ ไม่เคย</strong>เล่นร่วมกับ<strong>สำนักโฮโช</strong> • ผู้เล่นโคโตะสำนักยามาดะแทบไม่เล่นกับสำนักอิคุตะ — แต่ละสำนักเป็นวินัยเฉพาะทางที่ปิดสู่ภายนอก
+  </div>
+
+  <p>ที่สำคัญ ส่วนใหญ่คือ “ดนตรีต่างชาติที่ถูกดัดแปลง” — ญี่ปุ่น “<strong>รับ–ปรับ–หลอม</strong>” ดนตรีข้างนอกมาแล้ว 2,000 ปี การรับดนตรีตะวันตกจึงเป็นเพียง<strong>รอบใหม่ของกระบวนการเดิม</strong></p>
+</section>
+
+<!-- ================= HISTORY ================= -->
+<section id="history" class="reveal">
+  <div class="sec-head"><span class="num">03</span><h2>ทำไมโรงเรียนจึงสอนแต่ดนตรีตะวันตก</h2></div>
+  <div class="rule"></div>
+
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-year">1868 — ยุคเมจิ</div><p>เร่งพัฒนาประเทศ มองว่า “ของตะวันตกดีกว่าทุกอย่าง” เพลงดั้งเดิมถูกตราหน้าว่า <strong>“ไม่เหมาะสม”</strong> (เนื้อเพลงพูดเรื่องความรัก) จนเกือบสูญพันธุ์</p></div>
+    <div class="tl-item"><div class="tl-year">1873</div><p>หลักสูตรแรกใส่วิชาดนตรี แต่ทำไม่ได้จริง — <strong>ไม่มีครู ไม่มีตำรา ไม่มีหนังสือเรียน</strong></p></div>
+    <div class="tl-item"><div class="tl-year">1879 — ทางเลือกของอิซาว่า</div><p>① ใช้ตะวันตกล้วน ② ใช้ญี่ปุ่นล้วน (= เหมือนเปลี่ยนภาษาญี่ปุ่นเป็นอังกฤษ) ③ <strong>ผสมสองแบบสร้าง “เพลงแห่งชาติ”</strong> ← เลือกทาง ③</p></div>
+    <div class="tl-item"><div class="tl-year">1881</div><p>หนังสือเรียนดนตรีแรก <em>Shogaku Shoka Shu</em>: 33 เพลง แต่งเองแค่ 3 — สรุปเป็นแค่ “<span class="hl">ทำนองยุโรป + เนื้อร้องญี่ปุ่นแนวศีลธรรม</span>”</p></div>
+    <div class="tl-item"><div class="tl-year">1888</div><p>เพลงดั้งเดิมถูก “ปฏิรูป”: เปลี่ยนทำนอง/เนื้อร้องให้สุภาพ เขียนเป็นโน้ตตะวันตก (Sokyoku Shu)</p></div>
+    <div class="tl-item"><div class="tl-year">1890</div><p>กลายเป็นโรงเรียนดนตรีโตเกียว จ้างครูเยอรมัน → เป็น “<strong>เรือนเพาะชำดนตรีตะวันตกแท้</strong>” เพลงญี่ปุ่นหลุดจากหลักสูตร</p></div>
+    <div class="tl-item"><div class="tl-year">หลัง WWII</div><p>หลักสูตรกลางบังคับ (Gakushu Shido Yoryo) ประกาศให้<strong>ดนตรียุโรปเป็นฐาน</strong> “เพราะพื้นฐานความรู้สึกดนตรีต้องมาจากดนตรีแบบเดียว” — โดยไม่บอกว่าทำไมต้องยุโรป!</p></div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">ทำไมโครงการผสมจึงล้มเหลว</span>
+    ① เลือกใช้แต่กากาคุ (ดนตรีราชสำนัก <strong>ห่างไกลชีวิตประชาชน</strong>) &nbsp;② เห็นว่า “โน้ตสเกลเหมือน = ดนตรีเหมือน” แต่เมินเฉยเรื่องจังหวะ รูปแบบ สีสันเสียง บริบทวัฒนธรรม &nbsp;③ รัฐหันไปเน้นชาตินิยม–ศีลธรรม ไม่สนใจต่อ
+  </div>
+
+  <p>เพลงญี่ปุ่นค่อยๆ ถูกใส่กลับมาทีหลัง: <strong>1958</strong> มี 5 เพลงแบบ “ฟังอย่างเดียว” • <strong>1968</strong> เพิ่มเพลงพื้นบ้านเด็ก + อีก 9 เพลง • <strong>1977</strong> ลดลง • <strong>1989</strong> เน้นมากขึ้น แต่<strong>โครงสร้างเดิมยังไม่เปลี่ยน</strong> — ตะวันตกยังเป็นแกนเสมอ</p>
+</section>
+
+<!-- ================= CHANGE ================= -->
+<section id="change" class="reveal">
+  <div class="sec-head"><span class="num">04</span><h2>เสียงเรียกร้องให้เปลี่ยนแปลง</h2></div>
+  <div class="rule"></div>
+
+  <div class="grid">
+    <div class="card"><div class="jp">小泉文夫 • KOIZUMI FUMIO (1973)</div><h4>“เลิกใช้ลูกอ๊อดเถอะ!” 🐸</h4><p>(ลูกอ๊อด = โน้ตหัวกลมแบบตะวันตก) โจมตีว่า: เด็กเกลียดวิชาดนตรีเพราะถูกบังคับเรียนโน้ตที่ไม่ชอบ • ไม่เอาดนตรีไปใช้ในชีวิตจริง • สังคมเข้าใจผิดว่าดนตรีตะวันตกดีที่สุดในโลก → เสนอให้เริ่มจาก <strong>Warabeuta</strong> (เพลงเล่นของเด็ก)</p></div>
+    <div class="card"><div class="jp">児島恭子 • KOJIMA TOMIKO</div><h4>รุนแรงกว่านั้น</h4><p>เรียกร้องให้ใช้เพลงดั้งเดิมญี่ปุ่นเป็นฐานของหลักสูตร<strong>ทั้งหมด</strong></p></div>
+    <div class="card"><div class="jp">教師たち • ครูนักปฏิวัติ</div><h4>ลงมือสอนจริง</h4><p>ยามาดะ (ขลุ่ยโนห์+ชามิเซ็ง 20+ ปี) • จิฮาระ (โคโตะ) • โอฮาระ (กลองเกาหลี/แอฟริกัน/ญี่ปุ่น) • ปี 1991 จัดสัมมนาแห่งชาติเรื่องเพลงดั้งเดิมเป็นครั้งแรก</p></div>
+  </div>
+</section>
+
+<!-- ================= FUTURE ================= -->
+<section id="future" class="reveal">
+  <div class="sec-head"><span class="num">05</span><h2>ทางแยก 3 ทาง … และคำตอบ “Bi-musicality”</h2></div>
+  <div class="rule"></div>
+
+  <div class="paths">
+    <div class="path bad"><span class="badge">ทาง 1 ✗</span><h4>อยู่เฉย</h4><ul><li>ตะวันตกเป็นแกน เพลงญี่ปุ่นเป็นริ้วประดับ</li><li>การศึกษาดนตรี<strong>ตัดขาดจากสังคม</strong> → หายไปจากหลักสูตร</li></ul></div>
+    <div class="path bad"><span class="badge">ทาง 2 ✗</span><h4>เปลี่ยนเป็นเพลงญี่ปุ่นทั้งหมด</h4><ul><li>โกลาหล! เปลี่ยนครูและความรู้สึกสะสม 100 ปีไม่ทัน</li><li>คนญี่ปุ่นจะไม่ชื่นชมวาทยากร <strong>เซจิ โอซาวะ</strong> อีก 😅</li></ul></div>
+    <div class="path pick"><span class="badge">★ ทาง 3 — คำตอบ</span><h4>สร้างทางใหม่ที่รอดทั้งสอง</h4><ul><li>ศึกษาทั้งสองแบบเท่าเทียม แล้วหลอมรวม</li><li>คือการลองครั้งที่ 2 หลังความล้มเหลวของอิซาว่า</li></ul></div>
+  </div>
+
+  <h2 style="font-size:21px;margin:34px 0 4px">หัวใจของทาง 3: <span style="color:var(--vermillion)">Bi-musicality</span> (ทวิภาวะทางดนตรี)</h2>
+  <p style="color:var(--muted)">เหมือน bilingual (พูด 2 ภาษาได้คล่อง) แต่เป็นการ “ชำนาญ 2 ดนตรี” — และตัดสินแต่ละแบบด้วยเกณฑ์ของมันเอง</p>
+
+  <div class="bi">
+    <div class="bi-box"><div class="ic">🎹</div><h4>ฝึกให้ชำนาญทั้งสองก่อน</h4><p>ครูต้องร้อง <em>Winterreise</em> ภาษาเยอรมันได้ และร้องเพลงพื้นบ้าน <em>Kisobushi</em> ภาษาญี่ปุ่นได้ด้วย</p></div>
+    <div class="bi-box alt"><div class="ic">🍊🍎</div><h4>อย่าเอามาตรฐานไปวัดข้ามระบบ</h4><p>อย่าฟ้องว่า “เสียงร้องจมูกเพลงพื้นบ้านแย่” จากมาตรฐานเบลคันโต — เหมือนตำหนิว่าส้มไม่หวานเทแอปเปิ้ล</p></div>
+  </div>
+
+  <div class="quote">อิซาว่าล้มเหลวเพราะ <u>“ผสมก่อน เรียนทีหลัง”</u><br>ที่ถูกคือ — เชี่ยวชาญทั้งสองก่อน แล้วค่อยหลอมรวม</div>
+</section>
+
+<!-- ================= CONCLUSION ================= -->
+<section id="conclusion" class="reveal">
+  <div class="sec-head"><span class="num">06</span><h2>บทสรุป</h2></div>
+  <div class="rule"></div>
+  <p>ญี่ปุ่นมีข้อได้เปรียบ: มรดกดนตรี 1,000+ ปี + ประสบการณ์สอนดนตรีตะวันตก 100+ ปี ตามทฤษฎีชิบาตะ ญี่ปุ่นกำลังเข้าสู่ “<strong>ช่วงหมัก</strong>” — เห็นการหลอมรวมแล้วในผลงานของ <span class="hl">Takemitsu, Mayuzumi</span></p>
+  <p>เหมือนภาษาอังกฤษที่กลืนละติน/เยอรมัน/ฝรั่งเศสจนกลายเป็นภาษาใหม่ เพลงญี่ปุ่นยุคใหม่จะหลอมตะวันตก + ญี่ปุ่น + เอเชีย ให้กลายเป็น “<strong>เพลงแห่งชาติ</strong>” รุ่นใหม่ — และการศึกษาดนตรีในโรงเรียนต้องรับบทบาทสำคัญที่สุด</p>
+  <div class="callout">
+    <span class="tag">ประโยคปิดท้ายของบทความ</span>
+    100 ปีหลังจากอิซาว่า — <strong>“ความฝันของเขาอาจถึงเวลาเป็นจริงเสียที”</strong>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div><b>แหล่งอ้างอิง:</b> Ogawa, Masafumi. “Japanese Traditional Music and School Music Education.” <i>Philosophy of Music Education Review</i> 2, no. 1 (Spring 1994): 25–36 (JSTOR)</div>
+  <div style="margin-top:10px">สรุปเป็นภาษาไทยโดย AI • จากไฟล์ OCR: Ogawa-JapaneseTraditionalMusic-1994.md</div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const secs=[...document.querySelectorAll('section')],links=[...document.querySelectorAll('nav a')];
+addEventListener('scroll',()=>{let y=scrollY+90,i=secs.findIndex(s=>y>=s.offsetTop&&y<s.offsetTop+s.offsetHeight);
+links.forEach((a,j)=>a.style.borderBottomColor=j===i?'var(--vermillion)':'transparent');},{passive:true});
+</script>
+</body>
+</html>
