@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>สอนทฤษฎีดนตรี — Music Theory Playground | tonal × Bi-musicality</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&family=Noto+Serif+Thai:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/tonal/browser/tonal.min.js"></script>
+<style>
+:root{--indigo:#1d2b50;--verm:#d94f30;--gold:#c9a227;--paper:#faf6ee;--card:#fff;--line:#e5ddcc;--muted:#6b7080}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans Thai',system-ui,sans-serif;background:var(--paper);color:#22252b;line-height:1.85}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+.hero{background:linear-gradient(135deg,#16223f,#1d2b50 50%,#2a4370);color:#fff;padding:88px 22px 64px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.08;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='28' fill='none' stroke='white' stroke-width='1.5'/%3E%3Cpath d='M30 14 L32 28 L44 28 L34 36 L38 50 L30 40 L22 50 L26 36 L16 28 L28 28Z' fill='none' stroke='white' stroke-width='1.2'/%3E%3C/svg%3E")}
+.hero-inner{position:relative}
+.hero h1{font-family:'Noto Serif Thai',serif;font-size:clamp(28px,5vw,42px)}
+.hero p{color:#c8d4ec;margin-top:10px;font-size:17px}
+.chip{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 14px;font-size:13px;color:#e8edf7;margin:6px 6px 0 0}
+nav{position:sticky;top:0;z-index:20;background:rgba(250,246,238,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;gap:2px;overflow-x:auto;padding:0 12px;max-width:1020px;margin:0 auto}
+nav a{white-space:nowrap;color:var(--muted);text-decoration:none;font-weight:600;font-size:13.5px;padding:13px 12px;border-bottom:3px solid transparent}
+nav a:hover{color:var(--verm)}
+section{padding:52px 0 10px}
+h2{font-family:'Noto Serif Thai',serif;color:var(--indigo);font-size:clamp(22px,3.2vw,28px)}
+.rule{width:52px;height:4px;background:linear-gradient(90deg,var(--verm),var(--gold));border-radius:2px;margin:10px 0 20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 3px 14px rgba(29,43,80,.05)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:18px 0}
+.small{font-size:14px;color:var(--muted)}
+.kbd{display:flex;justify-content:center;user-select:none;margin:14px auto;max-width:640px;position:relative;height:160px}
+.white{flex:1;background:#fff;border:1px solid #bbb;border-radius:0 0 8px 8px;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;font-size:12px;font-weight:600;position:relative;z-index:1}
+.white.active{background:linear-gradient(180deg,#fff9e6,#ffe8a8)!important}
+.black{position:absolute;width:36px;height:96px;background:linear-gradient(180deg,#222,#000);border-radius:0 0 6px 6px;cursor:pointer;z-index:2;border:1px solid #000}
+.black.active{background:linear-gradient(180deg,#d94f30,#8a1d0a)!important}
+.out{min-height:48px;background:#faf6ee;border:1px dashed var(--line);border-radius:10px;padding:12px;font-size:15px;margin-top:10px}
+.pill{padding:6px 12px;border:1px solid var(--indigo);background:#fff;border-radius:999px;cursor:pointer;font-size:13px}
+.pill.on{background:var(--indigo);color:#fff}
+.swatch{display:inline-block;padding:4px 10px;border-radius:999px;background:var(--indigo);color:#fff;font-size:13px;font-weight:700;margin:3px}
+.note-chip{display:inline-block;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);margin:4px;font-weight:600}
+footer{background:var(--indigo);color:#aab6d4;text-align:center;padding:30px 22px;font-size:13px;margin-top:40px}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="hero-inner">
+<div style="letter-spacing:.14em;font-size:12px;color:#ffd98a;border:1px solid rgba(255,217,138,.4);display:inline-block;border-radius:999px;padding:5px 14px">TONAL × BI-MUSICALITY</div>
+<h1>สอนทฤษฎีดนตรี — เข้าใจง่าย เล่นได้ทันที</h1>
+<p>จากบทความ <em>Japanese Traditional Music & School Music Education</em> สู่การลงมือลอง — ตะวันตก ↔ ญี่ปุ่น ในที่เดียว</p>
+<div style="margin-top:14px"><span class="chip">🎹 เปียโนกดได้</span><span class="chip">🎼 สเกล & คอร์ด แบบ tonal</span><span class="chip">🇯🇵 สเกลญี่ปุ่น hirajoshi / in-sen</span><span class="chip">🇹🇭 ภาษาไทยง่ายๆ</span></div>
+</div></header>
+
+<nav><div class="nav-in">
+<a href="#l1">① โน้ต</a><a href="#l2">② ขั้นคู่</a><a href="#l3">③ สเกล</a><a href="#l4">④ คอร์ด</a><a href="#l5">⑤ วงกลม 5 คู่</a><a href="#play">🎹 ห้องทดลอง</a><a href="index.html">← สรุปบทความ</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="l1">
+<h2>บทที่ 1 — โน้ต (Note) คืออะไร</h2><div class="rule"></div>
+<div class="grid">
+<div class="card">
+<h4 style="color:var(--indigo)">โน้ต 7 ตัวหลัก</h4>
+<p>C D E F G A B — เหมือน ก ข ค ในภาษาไทย วนซ้ำทุกอ็อกเทฟ</p>
+<p class="small">ตัวอย่าง: <b>C4</b> = โดกลาง (middle C), <b>A4</b> = 440 Hz (เสียงมาตรฐานตั้งสาย)</p>
+<div style="margin-top:10px">
+<label class="small">พิมพ์โน้ต:</label>
+<input id="nIn" value="C4" placeholder="เช่น C4, F#3, Bb5" style="width:120px;padding:8px;border:1px solid var(--line);border-radius:8px">
+<button onclick="showNote()" style="padding:8px 14px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">ดูค่า</button>
+<div id="nOut" class="out"></div>
+</div>
+</div>
+<div class="card">
+<h4>เปียโน 1 อ็อกเทฟ — กดฟังเสียงได้เลย</h4>
+<div class="kbd" id="kbd"></div>
+<div class="small" style="text-align:center">กดคีย์บนเปียโน → ดูชื่อโน้ต + ความถี่ + กดค้างเพื่อฟัง (Web Audio)</div>
+</div>
+</div>
+</section>
+
+<section id="l2">
+<h2>บทที่ 2 — ขั้นคู่ (Interval) ระยะห่างระหว่างโน้ต</h2><div class="rule"></div>
+<div class="card">
+<p><b>คิดง่ายๆ:</b> ขั้นคู่เหมือน “ระยะทาง” ระหว่างบ้าน 2 หลัง — บอกว่าห่างกันกี่ขั้น</p>
+<div class="grid" style="grid-template-columns:1fr 1fr">
+<div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<input id="ivFrom" value="C" style="width:70px;padding:8px;border:1px solid var(--line);border-radius:8px">
+<span style="align-self:center">→</span>
+<input id="ivTo" value="G" style="width:70px;padding:8px;border:1px solid var(--line);border-radius:8px">
+<button onclick="showIv()" style="padding:8px 14px;background:var(--verm);color:#fff;border:none;border-radius:8px;cursor:pointer">หา</button>
+</div>
+<div id="ivOut" class="out"></div>
+</div>
+<div class="small">
+<b>ตัวอย่างให้เห็นภาพ:</b><br>
+• C → G = <b>5P</b> (คู่ 5 เพอร์เฟกต์) — เหมือนโด → ซอล<br>
+• C → E = <b>3M</b> (คู่ 3 เมเจอร์) — เสียงสดใส<br>
+• C → Eb = <b>3m</b> (คู่ 3 ไมเนอร์) — เสียงเศร้าลง
+</div>
+</div>
+</div>
+</section>
+
+<section id="l3">
+<h2>บทที่ 3 — สเกล (Scale) บันไดเสียง</h2><div class="rule"></div>
+<p>สเกลคือ “ชุดโน้ตที่เลือกมาเรียงเป็นบันได” — เหมือนเลือกสี 5–7 สีมาจัดเป็นจานสี</p>
+<div class="grid">
+<div class="card">
+<h4>ลองสเกลด้วยตัวเอง</h4>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0">
+<input id="scTon" value="C" style="width:70px;padding:8px;border:1px solid var(--line);border-radius:8px">
+<select id="scType" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:8px">
+<option value="major">major — สดใส</option>
+<option value="minor">minor — เศร้า/ละม้าย</option>
+<option value="dorian">dorian</option>
+<option value="mixolydian">mixolydian</option>
+<option value="pentatonic">pentatonic (5 เสียง)</option>
+<option value="major pentatonic">major pentatonic</option>
+<option value="minor pentatonic">minor pentatonic</option>
+<option value="hirajoshi">hirajoshi 🇯🇵 (ญี่ปุ่น)</option>
+<option value="in-sen">in-sen 🇯🇵 (ญี่ปุ่น)</option>
+<option value="iwato">iwato 🇯🇵</option>
+<option value="kumoijoshi">kumoijoshi 🇯🇵</option>
+</select>
+<button onclick="showScale()" style="padding:8px 16px;background:var(--verm);color:#fff;border:none;border-radius:8px;cursor:pointer">แสดง</button>
+</div>
+<div id="scOut" class="out"></div>
+<div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+<button class="pill on" onclick="qScale('C','major')">C major</button>
+<button class="pill" onclick="qScale('A','minor')">A minor</button>
+<button class="pill" onclick="qScale('C','hirajoshi')">C hirajoshi 🇯🇵</button>
+<button class="pill" onclick="qScale('D','in-sen')">D in-sen 🇯🇵</button>
+<button class="pill" onclick="qScale('C','pentatonic')">C pentatonic</button>
+</div>
+</div>
+<div class="card" style="background:linear-gradient(135deg,#fff9ec,#fdf3dc)">
+<h4>🇯🇵 เทียบให้เห็นภาพ: ญี่ปุ่น vs ตะวันตก</h4>
+<p class="small">ตะวันตกใช้ 7 เสียง (major/minor) → เสียง “ครบ”<br>ญี่ปุ่นหลายสเกลใช้ 5 เสียง (hirajoshi, in-sen) → เสียง “โปร่ง เว้นช่อง” เหมือนภาพวาดหมึกที่เว้นพื้นขาวไว้</p>
+<div id="compareOut" class="out" style="background:#fff"></div>
+</div>
+</div>
+</section>
+
+<section id="l4">
+<h2>บทที่ 4 — คอร์ด (Chord) โน้ตหลายตัวพร้อมกัน</h2><div class="rule"></div>
+<div class="grid">
+<div class="card">
+<h4>ต่อคอร์ดเอง</h4>
+<div style="display:flex;gap:8px">
+<input id="chIn" value="Cmaj7" placeholder="เช่น C, Cm, G7, Dm7" style="flex:1;padding:8px;border:1px solid var(--line);border-radius:8px">
+<button onclick="showChord()" style="padding:8px 16px;background:var(--indigo);color:#fff;border:none;border-radius:8px;cursor:pointer">แสดง</button>
+</div>
+<div id="chOut" class="out"></div>
+<p class="small"><b>อ่านชื่อคอร์ด:</b> Cmaj7 = C(ราก) + maj7(ชนิด) — เหมือน “ข้าว + ผัดกระเพรา”</p>
+</div>
+<div class="card">
+<h4>ตัวอย่างคอร์ดยอดฮิต</h4>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<button class="pill" onclick="qChord('C')">C</button>
+<button class="pill" onclick="qChord('Cm')">Cm</button>
+<button class="pill" onclick="qChord('G7')">G7</button>
+<button class="pill" onclick="qChord('Dm7')">Dm7</button>
+<button class="pill" onclick="qChord('Fmaj7')">Fmaj7</button>
+<button class="pill" onclick="qChord('Am7')">Am7</button>
+</div>
+<div id="chQuick" class="small" style="margin-top:10px"></div>
+</div>
+</div>
+</section>
+
+<section id="l5">
+<h2>บทที่ 5 — วงกลม 5 คู่ (Circle of Fifths)</h2><div class="rule"></div>
+<div class="card">
+<p class="small">วงกลมที่เรียงคีย์ตามระยะคู่ 5 — ช่วยจำเครื่องหมายชาร์ป/แฟลต และเดาทางคอร์ดได้</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0" id="circle"></div>
+<div id="circleOut" class="out"></div>
+<p class="small">กดที่คีย์ในวงกลม → ดูสเกล major ของคีย์นั้นทันที</p>
+</div>
+</section>
+
+<section id="play">
+<h2>🎹 ห้องทดลองรวม</h2><div class="rule"></div>
+<div class="card">
+<p>พิมพ์อะไรก็ได้ — โน้ต สเกล หรือคอร์ด ระบบจะบอกว่าเป็นอะไรด้วย <code>tonal</code></p>
+<input id="anyIn" placeholder="ลองพิมพ์: C major, D dorian, Cmaj7, F# hirajoshi" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px" oninput="detectAny()">
+<div id="anyOut" class="out"></div>
+</div>
+</section>
+
+<div style="text-align:center;margin:28px 0">
+<a href="index.html" style="display:inline-block;padding:10px 18px;background:#fff;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--indigo);font-weight:600">← กลับหน้าสรุปบทความ</a>
+</div>
+
+</div>
+<footer>
+<b>สอนทฤษฎีดนตรี</b> — ใช้ <a href="https://github.com/tonaljs/tonal" style="color:#ffd98a">tonaljs/tonal</a> ผ่าน CDN • เชื่อมแนวคิด Bi-musicality จากบทความ Ogawa (1994)
+</footer>
+
+<script>
+const AC = new (window.AudioContext||window.webkitAudioContext)();
+function playFreq(f){ const o=AC.createOscillator(), g=AC.createGain(); o.type='sine'; o.frequency.value=f; g.gain.value=0.22; o.connect(g); g.connect(AC.destination); o.start(); g.gain.exponentialRampToValueAtTime(0.0001, AC.currentTime+0.9); o.stop(AC.currentTime+0.9); }
+
+function showNote(){
+  const v=document.getElementById('nIn').value.trim()||'C4';
+  const n=Tonal.Note.get(v);
+  const out=document.getElementById('nOut');
+  if(!n.name) out.innerHTML='<span style="color:#c33">ไม่พบโน้ต ลองเช่น C4, Eb3</span>';
+  else out.innerHTML=`<b>${n.name}</b> — chroma ${n.chroma}, midi ${n.midi}, freq ${n.freq? n.freq.toFixed(2)+' Hz':''} <button onclick="playFreq(${n.freq||440})" style="margin-left:8px;padding:4px 10px;border-radius:999px;border:1px solid var(--indigo);background:#fff;cursor:pointer">▶ ฟัง</button>`;
+}
+
+function buildKbd(){
+  const notes=['C4','C#4','D4','D#4','E4','F4','F#4','G4','G#4','A4','A#4','B4','C5'];
+  const whites=notes.filter(n=>!n.includes('#'));
+  const kbd=document.getElementById('kbd');
+  whites.forEach(n=>{
+    const d=document.createElement('div'); d.className='white'; d.textContent=n.replace('4','').replace('5',''); d.dataset.note=n;
+    d.onclick=()=>{
+      const f=Tonal.Note.freq(n); if(f) playFreq(f);
+      document.getElementById('nIn').value=n; showNote();
+      d.classList.add('active'); setTimeout(()=>d.classList.remove('active'),300);
+    };
+    kbd.appendChild(d);
+  });
+  const pos=[0.72,1.72,3.22,4.22,5.72]; // approx black key positions (in white units)
+  // simpler: absolute left %
+  const blacks=['C#4','D#4','F#4','G#4','A#4'];
+  const leftPct=[10,21,43,54,65];
+  blacks.forEach((n,i)=>{
+    const b=document.createElement('div'); b.className='black'; b.style.left=leftPct[i]+'%';
+    b.title=n; b.onclick=(e)=>{ e.stopPropagation(); const f=Tonal.Note.freq(n); if(f) playFreq(f); document.getElementById('nIn').value=n; showNote(); b.classList.add('active'); setTimeout(()=>b.classList.remove('active'),300); };
+    kbd.appendChild(b);
+  });
+}
+function showIv(){
+  const a=document.getElementById('ivFrom').value.trim()||'C';
+  const b=document.getElementById('ivTo').value.trim()||'G';
+  const iv=Tonal.Interval.distance(a,b);
+  const semi=Tonal.Interval.semitones(iv);
+  document.getElementById('ivOut').innerHTML=`${a} → ${b} = <b style="color:var(--verm)">${iv}</b> <span style="color:var(--muted)">(${semi} semitones)</span> — เช่น ${a} ไป ${b} ห่าง ${semi} ครึ่งเสียง`;
+}
+function showScale(){
+  const t=document.getElementById('scTon').value.trim()||'C';
+  const ty=document.getElementById('scType').value;
+  const s=Tonal.Scale.get(t+' '+ty);
+  const o=document.getElementById('scOut');
+  if(!s.notes.length) o.innerHTML='<span style="color:#c33">ไม่พบสเกล</span>';
+  else o.innerHTML=`<b>${s.name}</b> → ${s.notes.map(n=>`<span class="note-chip">${n}</span>`).join('')} <div class="small" style="margin-top:6px">${s.intervals.join(' ')} • ${s.notes.length} โน้ต</div>`;
+}
+function qScale(t,ty){ document.getElementById('scTon').value=t; document.getElementById('scType').value=ty; showScale(); const s=Tonal.Scale.get(t+' '+ty); document.getElementById('compareOut').innerHTML=`<b>${s.name}</b>: ${s.notes.map(n=>`<span class="swatch">${n}</span>`).join(' ')}`; }
+function showChord(){
+  const c=document.getElementById('chIn').value.trim()||'C';
+  const ch=Tonal.Chord.get(c);
+  const o=document.getElementById('chOut');
+  if(!ch.notes.length) o.innerHTML='<span style="color:#c33">ไม่พบคอร์ด</span>';
+  else o.innerHTML=`<b>${ch.name||c}</b> <span class="small">(${ch.type})</span> → ${ch.notes.map(n=>`<span class="note-chip">${n}</span>`).join('')} <div class="small">${ch.intervals.join(' ')}</div>`;
+}
+function qChord(c){ document.getElementById('chIn').value=c; showChord(); document.getElementById('chQuick').innerHTML=`เลือก <b>${c}</b> แล้ว — ลองฟังทีละโน้ตบนเปียโนด้านบน`; }
+
+function buildCircle(){
+  const order=['C','G','D','A','E','B','F#','C#','Gb','Db','Ab','Eb','Bb','F'];
+  const c=document.getElementById('circle');
+  order.forEach(k=>{
+    const b=document.createElement('button'); b.className='pill'; b.textContent=k; b.onclick=()=>{
+      const s=Tonal.Scale.get(k+' major'); document.getElementById('circleOut').innerHTML=`<b>${k} major</b>: ${s.notes.map(n=>`<span class="swatch">${n}</span>`).join(' ')}`;
+      [...c.children].forEach(x=>x.classList.remove('on')); b.classList.add('on');
+    }; c.appendChild(b);
+  });
+}
+function detectAny(){
+  const v=document.getElementById('anyIn').value.trim();
+  if(!v){ document.getElementById('anyOut').innerHTML=''; return; }
+  const sc=Tonal.Scale.get(v);
+  if(sc.notes.length){ document.getElementById('anyOut').innerHTML=`สเกล <b>${sc.name}</b> → ${sc.notes.join(' – ')}`; return; }
+  const ch=Tonal.Chord.get(v);
+  if(ch.notes.length){ document.getElementById('anyOut').innerHTML=`คอร์ด <b>${ch.name}</b> → ${ch.notes.join(' – ')}`; return; }
+  const n=Tonal.Note.get(v);
+  if(n.name){ document.getElementById('anyOut').innerHTML=`โน้ต <b>${n.name}</b> midi ${n.midi} freq ${n.freq? n.freq.toFixed(1):''}`; return; }
+  document.getElementById('anyOut').innerHTML='<span style="color:var(--muted)">พิมพ์ชื่อสเกล/คอร์ด/โน้ต แล้วระบบจะบอกให้</span>';
+}
+buildKbd(); buildCircle(); showNote(); showScale(); showChord();
+</script>
+</body>
+</html>
